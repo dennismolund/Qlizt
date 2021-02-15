@@ -13,6 +13,7 @@ app.engine("hbs", expressHandlebars({
 
 app.use(
 	express.static("public")
+	
 )
 
 app.use(bodyParser.urlencoded({
