@@ -13,19 +13,26 @@ router.get("/signup", function(request, response){
 
 router.post("/signup", function(request, response){
 	
-	const username = request.body.username
-	const email = request.body.email
-    const password = request.body.password
+	const account = {
+        username: request.body.username,
+        email: request.body.email,
+        password: request.body.password,
+        confirmationPassword: request.body.confirmationPassword
+    }
 
     
 	
-	const errors = getValidationErrors(username, email,password)
+	const errors = getValidationErrors(account)
 	
 	if(errors.length == 0){
 		
-		db.createAccount(username, email, password, function(error, accountID){
+		db.createAccount(account, function(error, accountID){
 			if(error){
-				console.log("error:" , error)
+                const model = {
+                    error: error
+                }
+				console.log("error router:" , error)
+                response.render("signup.hbs", model)
 			}else{
 				console.log("createAccount:", accountID)
                 response.render("login.hbs")
@@ -36,12 +43,9 @@ router.post("/signup", function(request, response){
 	}else{
 		
 		const model = {
-			errors: errors,
-			username: username,
-			email: email,
-            password: password
+			errors: errors
 		}
-        console.log("error:" , model.errors)
+        console.log("error:" , errors)
 		
 		response.render("signup.hbs", model)
 		
@@ -49,27 +53,31 @@ router.post("/signup", function(request, response){
 	
 })
 
-function getValidationErrors(username, email, password){
+
+
+module.exports = router
+
+function getValidationErrors(account){
 	
 	const errors = []
 	
-	if(username.length == 0){
+	if(account.username.length == 0){
 		errors.push("Name may not be empty.")
 	}
 	
-	if(email.length == 0){
+	if(account.email.length == 0){
 		errors.push("Email may not be empty.")
 	}
-    if(password.length == 0){
+    if(account.password.length == 0){
         errors.push("Password may not be empty.")
+    }
+    if(account.password != account.confirmationPassword){
+        errors.push("Passwords doesn't match")
     }
 	
 	return errors
 	
 }
-
-module.exports = router
-
 
 /*
 router.get("/login", function(request, response){

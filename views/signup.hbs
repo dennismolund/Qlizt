@@ -24,6 +24,7 @@
  <section class="section ">
         <div class="container has-text-centered">
             <h2 class="title">Sign up</h2>
+            <h3>{{error}}{{errors}}</h3>
         </div>
 
         <form action="" method="POST">
@@ -49,7 +50,7 @@
                     </span>
                   </div>
                 </div>
-
+                
                 <div class="field">
                   <label class="label">Password</label>
                   <div class="control has-icons-right">
@@ -59,6 +60,17 @@
                     </span>
                   </div>
                 </div>
+
+                <div class="field">
+                  <label class="label">Confirm password</label>
+                  <div class="control has-icons-right">
+                    <input class="input" type="password" name="confirmationPassword" value="{{confirmationPassword}}">
+                    <span class="icon is-small is-right">
+                      <i class="fa fa-key"></i>
+                    </span>
+                  </div>
+                </div>
+                
                 <div class="has-text-centered">
                   <input class="button is-vcentered is-primary is-outlined" type="submit" value="Sign up"></input>
                 </div>
