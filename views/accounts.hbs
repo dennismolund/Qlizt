@@ -1,0 +1,24 @@
+{{#if errorOcurred}}
+	<p>Internal server error, try again later!</p>
+{{else}}
+	
+	{{#if accounts.length}}
+	
+		<p>There are {{accounts.length}} accounts in the database</p>
+		
+		<ul>
+		{{#each accounts}}
+        <p>-</p>
+        account: {{id}}
+			<li>username: {{username}}</li>
+            <li>email: {{email}} </li>
+            <li>password: {{password}}</li>
+            
+		{{/each}}
+		</ul>
+		
+	{{else}}
+		<p>There are no Accounts.</p>
+	{{/if}}
+	
+{{/if}}

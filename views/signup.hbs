@@ -1,0 +1,75 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/">
+       <img class="ml-6" src="/images/Brand.jpg" alt="Qlizt"/> 
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu mr-4">
+    <div class="navbar-end mr-6">
+      <div class="navbar-item">
+        <div class="columns is-variable is-1-mobile is-0-tablet is-3-desktop is-8-widescreen is-2-fullhd is-vcentered ">
+            <div class="column is-7">
+                <a href="/account/signup"><strong>Sign up</strong></a>
+            </div>
+            <div class="column is-6">
+                <a href="/account/login"><strong>Log in</strong></a>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+ <section class="section ">
+        <div class="container has-text-centered">
+            <h2 class="title">Sign up</h2>
+        </div>
+
+        <form action="" method="POST">
+          <div class="columns is-vcentered">
+            <div class="login column ">
+              <section class="section">
+              <div class="field">
+                <label class="label">Username</label>
+                <div class="control has-icons-right">
+                  <input class="input" type="text" name="username" value="{{username}}">
+                  <span class="icon is-small is-right">
+                    <i class="fa fa-user"></i>
+                  </span>
+                </div>
+              </div>
+
+                <div class="field">
+                  <label class="label">Email</label>
+                  <div class="control has-icons-right">
+                    <input class="input" type="text" name="email" value="{{email}}">
+                    <span class="icon is-small is-right">
+                      <i class="fa fa-envelope"></i>
+                    </span>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label class="label">Password</label>
+                  <div class="control has-icons-right">
+                    <input class="input" type="password" name="password" value="{{password}}">
+                    <span class="icon is-small is-right">
+                      <i class="fa fa-key"></i>
+                    </span>
+                  </div>
+                </div>
+                <div class="has-text-centered">
+                  <input class="button is-vcentered is-primary is-outlined" type="submit" value="Sign up"></input>
+                </div>
+                <div class="has-text-centered">
+                  <a href="/account/login"> Already have an account?</a>
+                </div>
+              </section>
+            </div>
+          <div id="particles-js" class="interactive-bg column is-8">
+
+          </div>
+      </div>
+    </form>
+    </section>
