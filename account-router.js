@@ -7,6 +7,29 @@ router.get("/login", function(request, response){
     response.render("login.hbs")
 })
 
+router.post("/loginRequest", function(request, response){
+    const account = {
+        username: request.body.username,
+        password: request.body.password,
+        email: "placeholder",
+        confirmationPassword: request.params.password
+    }
+        
+        db.getAccountByUsername(account.username, function(error, accountFromDB){
+            if(error){
+                console.log("ERROR MESSAGE: ", error)
+                response.render("login.hbs")
+            }else{
+                console.log("AccountFromDB in router:" + accountFromDB)
+                if(account.password == accountFromDB.password){
+                    console.log("SUCCESSFULL LOGIN!");
+                }
+            }
+        })
+   
+})
+
+
 router.get("/signup", function(request, response){
     response.render("signup.hbs")
 })
@@ -62,7 +85,7 @@ function getValidationErrors(account){
 	const errors = []
 	
 	if(account.username.length == 0){
-		errors.push("Name may not be empty.")
+		errors.push("Username may not be empty.")
 	}
 	
 	if(account.email.length == 0){

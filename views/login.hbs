@@ -26,9 +26,9 @@
             <h2 class="title">Log in</h2>
         </div>
 
-        <form action="/account/createAccount" method="POST">
+        <form action="loginRequest" method="POST">
           <div class="columns is-vcentered">
-            <div class="login column is-4 ">
+            <div class="login column ">
               <section class="section">
               <div class="field">
                 <label class="label">Username</label>
@@ -40,7 +40,7 @@
                 </div>
               </div>
 
-
+                
                 <div class="field">
                   <label class="label">Password</label>
                   <div class="control has-icons-right">
@@ -50,11 +50,13 @@
                     </span>
                   </div>
                 </div>
+
+                
                 <div class="has-text-centered">
-                  <a class="button is-vcentered is-primary is-outlined" type="submit" value="sign-in">Sign In!</a>
+                  <input class="button is-vcentered is-primary is-outlined" type="submit" value="Sign up"></input>
                 </div>
                 <div class="has-text-centered">
-                  <a href="/account/login"> Don't have an account? Sign up now !</a>
+                  <a href="/account/signup"> Don't have an account?</a>
                 </div>
               </section>
             </div>
