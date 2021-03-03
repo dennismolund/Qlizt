@@ -8,8 +8,17 @@ router.get("/login", function(request, response){
 })
 
 router.get("/overview", function(request, response){
-    console.log(request.session.user);
-    response.render("overview.hbs")
+
+    db.getPlaylistByUserId(request.session.userId, function(error, playlistsFromDb){
+        if(error){
+            response.render("overview.hbs")
+        }else{
+            console.log("INSIDE ROUTER: " , playlistsFromDb);
+        
+            response.render("overview.hbs", {playlists: playlistsFromDb})
+        }
+    })
+
 })
 
 router.get("/signup", function(request, response){
@@ -30,11 +39,11 @@ router.post("/login", function(request, response){
                 console.log("ERROR MESSAGE: ", error)
                 response.render("login.hbs")
             }else{
-                console.log("AccountFromDB in router:" + accountFromDb)
                 if(account.enteredPassword == accountFromDb.password){
-                    console.log("SUCCESSFULL LOGIN!");
                     request.session.isLoggedIn = true
                     request.session.user = accountFromDb.username
+                    request.session.userEmailadress = accountFromDb.email
+                    request.session.userId = accountFromDb.id
                     response.redirect("/account/overview")
                 }else{
                     //wrong password

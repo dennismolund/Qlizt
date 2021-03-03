@@ -26,10 +26,13 @@ app.use(session({
 app.use(function(request, response, next){
 	const isLoggedIn = request.session.isLoggedIn
 	const activeUsername = request.session.user
+	const activeUserEmailadress = request.session.email
+	const activeUserId = request.session.userId
 
 	response.locals.isLoggedIn = isLoggedIn
 	response.locals.activeUsername = activeUsername
-
+	response.locals.activeUserEmailadress = activeUserEmailadress
+	response.locals.activeUserId = activeUserId
 	next()
 })
 
@@ -63,9 +66,11 @@ app.get("/", function(request, response){
 const accountRouter = require('./router/account-router')
 const contactRouter = require('./router/contacts-router')
 const aboutRouter = require('./router/about-router')
+const playlistRouter = require('./router/playlist-router')
 
 app.use("/account", accountRouter)
 app.use("/contacts", contactRouter)
 app.use("/about", aboutRouter)
+app.use("/playlist", playlistRouter)
 
 app.listen(8080)

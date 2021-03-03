@@ -1,0 +1,25 @@
+{{#if errorOcurred}}
+	<p>Internal server error, try again later!</p>
+{{else}}
+	
+	{{#if playlists.length}}
+	
+		<p>There are {{playlists.length}} playlists in the database</p>
+		
+		<ul>
+		{{#each playlists}}
+        <p>-</p>
+        Playlist ID: {{id}}
+            <li>username: {{username}} </li>
+            <li>userId: {{userId}}</li>
+            <li>email: {{email}}</li>
+            <li>playlistname: {{playlistname}}</li>
+            
+		{{/each}}
+		</ul>
+		
+	{{else}}
+		<p>There are no Playlists.</p>
+	{{/if}}
+	
+{{/if}}
