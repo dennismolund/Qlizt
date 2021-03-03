@@ -1,0 +1,27 @@
+a{
+    color: black;
+}
+
+.line {
+    border-bottom: 2px solid #ccc;
+    display: block;
+}
+
+.line-black {
+    border-bottom: 1px solid black;
+    display: block;
+}
+
+.vertical-line {
+    border-left: 2px solid black;
+    height: 500px;
+  }
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+body > footer {
+    margin-top: auto;
+}

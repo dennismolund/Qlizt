@@ -1,87 +1,86 @@
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a class="navbar-item" href="/">
-       <img class="ml-6" src="/images/Brand.jpg" alt="Qlizt"/> 
-    </a>
-  </div>
+<section class="section">
 
-  <div id="navbarBasicExample" class="navbar-menu mr-4">
-    <div class="navbar-end mr-6">
-      <div class="navbar-item">
-        <div class="columns is-variable is-1-mobile is-0-tablet is-3-desktop is-8-widescreen is-2-fullhd is-vcentered ">
-            <div class="column is-7">
-                <a href="/account/signup"><strong>Sign up</strong></a>
-            </div>
-            <div class="column is-6">
-                <a href="/account/login"><strong>Log in</strong></a>
-            </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</nav>
+<div class="level">
+  <a class="level-item" href="/"><img src="/images/Brand.jpg" alt="Qlizt"/></a>
+</div>
 
- <section class="section ">
-        <div class="container has-text-centered">
-            <h2 class="title">Sign up</h2>
-            <h3>{{error}}{{errors}}</h3>
+
+  <form action="" method="POST">
+    <div class="columns is-vcentered ">
+      <div class="column"></div>
+      <div class="column">
+        <div class="has-text-centered">
+          <span class="line"></span>
+          <h3 class="subtitle is-3 mt-3">  Sign up for Qlizt</h3>
+          <h3>{{error}}</h3>
         </div>
 
-        <form action="" method="POST">
-          <div class="columns is-vcentered">
-            <div class="login column ">
-              <section class="section">
-              <div class="field">
-                <label class="label">Username</label>
-                <div class="control has-icons-right">
-                  <input class="input" type="text" name="username" value="{{username}}">
-                  <span class="icon is-small is-right">
-                    <i class="fa fa-user"></i>
-                  </span>
-                </div>
-              </div>
-
-                <div class="field">
-                  <label class="label">Email</label>
-                  <div class="control has-icons-right">
-                    <input class="input" type="text" name="email" value="{{email}}">
-                    <span class="icon is-small is-right">
-                      <i class="fa fa-envelope"></i>
-                    </span>
-                  </div>
-                </div>
-                
-                <div class="field">
-                  <label class="label">Password</label>
-                  <div class="control has-icons-right">
-                    <input class="input" type="password" name="password" value="{{password}}">
-                    <span class="icon is-small is-right">
-                      <i class="fa fa-key"></i>
-                    </span>
-                  </div>
-                </div>
-
-                <div class="field">
-                  <label class="label">Confirm password</label>
-                  <div class="control has-icons-right">
-                    <input class="input" type="password" name="confirmationPassword" value="{{confirmationPassword}}">
-                    <span class="icon is-small is-right">
-                      <i class="fa fa-key"></i>
-                    </span>
-                  </div>
-                </div>
-                
-                <div class="has-text-centered">
-                  <input class="button is-vcentered is-primary is-outlined" type="submit" value="Sign up"></input>
-                </div>
-                <div class="has-text-centered">
-                  <a href="/account/login"> Already have an account?</a>
-                </div>
-              </section>
+        <section class="box">
+          <div class="field">
+            <label class="label">Username</label>
+            <div class="control has-icons-right">
+              <input class="input" type="text" name="username" value="{{username}}" placeholder="Create your username">
+              <span class="icon is-small is-right">
+                <i class="fa fa-user"></i>
+              </span>
             </div>
-          <div id="particles-js" class="interactive-bg column is-8">
-
           </div>
+
+          <div class="field">
+            <label class="label">What is your emailadress</label>
+            <div class="control has-icons-right">
+              <input class="input" type="text" name="email" value="{{email}}" placeholder="Write your emailadress here">
+              <span class="icon is-small is-right">
+                <i class="fa fa-envelope"></i>
+              </span>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Password</label>
+            <div class="control has-icons-right">
+              <input class="input" type="password" name="password" value="{{password}}" placeholder="Create your password">
+              <span class="icon is-small is-right">
+                <i class="fa fa-key"></i>
+              </span>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Confirm password</label>
+            <div class="control has-icons-right">
+              <input class="input" type="password" name="confirmationPassword" value="{{confirmationPassword}}" placeholder="Confirm your password">
+              <span class="icon is-small is-right">
+                <i class="fa fa-key"></i>
+              </span>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="has-text-centered">
+              <input class="button is-vcentered is-rounded is-outlined" type="submit" value="Sign up"></input>
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="line"></span>
+          </div>
+          
+          <div class="field">
+            <div class="has-text-centered">
+            <a href="/account/login"> Already have an account?</a>
+          </div>
+          </div>
+
+          <div class="field">
+            <div class="has-text-centered">
+              <a class="button is-vcentered is-rounded is-outlined" href="/account/login">Log in</a>
+          </div>
+          </div>
+          
+        </section>
       </div>
-    </form>
-    </section>
+      <div class="column"></div>
+    </div>
+  </form>
+</section>
