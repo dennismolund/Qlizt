@@ -46,14 +46,14 @@ exports.createAccount = function(account, callback){
 	})
 }
 
-exports.getAccountByUsername = function(username, callback){
+exports.getAccountByUsername = function(enteredUsername, callback){
     const query = "SELECT * FROM accounts WHERE username = ?"
-    const values = [username]
+    const values = [enteredUsername]
 
     db.get(query, values, function(error, accountFromDb){
 		
 		if(error){
-			callback("Database error.")
+			callback("Database error.", null)
 		}else{
 			callback(null, accountFromDb)
 		}

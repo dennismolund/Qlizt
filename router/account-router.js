@@ -8,6 +8,7 @@ router.get("/login", function(request, response){
 })
 
 router.get("/overview", function(request, response){
+    console.log(request.session.user);
     response.render("overview.hbs")
 })
 
@@ -15,27 +16,29 @@ router.get("/signup", function(request, response){
     response.render("signup.hbs")
 })
 
-router.post("/loginRequest", function(request, response){
+router.post("/login", function(request, response){
     const account = {
-        username: request.body.username,
-        password: request.body.password,
+        enteredUsername: request.body.username,
+        enteredPassword: request.body.password,
     }
 
-    if(account.username.length == 0 || account.password.length == 0){
+    if(account.enteredUsername.length == 0 || account.enteredPassword.length == 0){
         response.render("login.hbs")
     }else{
-        db.getAccountByUsername(account.username, function(error, accountFromDb){
+        db.getAccountByUsername(account.enteredUsername, function(error, accountFromDb){
             if(error){
                 console.log("ERROR MESSAGE: ", error)
                 response.render("login.hbs")
             }else{
                 console.log("AccountFromDB in router:" + accountFromDb)
-                if(account.password == accountFromDb.password){
+                if(account.enteredPassword == accountFromDb.password){
                     console.log("SUCCESSFULL LOGIN!");
+                    request.session.isLoggedIn = true
                     request.session.user = accountFromDb.username
-    
-                    
                     response.redirect("/account/overview")
+                }else{
+                    //wrong password
+                    response.render("login.hbs")
                 }
             }
         })
@@ -83,7 +86,7 @@ router.post("/signup", function(request, response){
 	
 })
 
-router.get("/sign-out", function(request, response){
+router.get("/logout", function(request, response){
     console.log("Destroying session")
     request.session.destroy(function(error){
         console.log(error)

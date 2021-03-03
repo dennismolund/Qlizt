@@ -23,6 +23,16 @@ app.use(session({
 	secret: 'woldufnegh'
 }))
 
+app.use(function(request, response, next){
+	const isLoggedIn = request.session.isLoggedIn
+	const activeUsername = request.session.user
+
+	response.locals.isLoggedIn = isLoggedIn
+	response.locals.activeUsername = activeUsername
+
+	next()
+})
+
 
 app.get("/test", function(request, response){
 
