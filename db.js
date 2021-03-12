@@ -20,11 +20,17 @@ db.run(" CREATE TABLE IF NOT EXISTS playlists (\
     playlistname VARCHAR(30) NOT NULL) \
     ")
 
+db.run(" CREATE TABLE IF NOT EXISTS songs (\
+    id INTEGER PRIMARY KEY AUTOINCREMENT, \
+    title VARCHAR(50) NOT NULL, \
+    artist VARCHAR(50) NOT NULL)\
+    ")
+
 //stores songs within playlists with playlistId as foreign key.
-db.run(" CREATE TABLE IF NOT EXISTS playlistTracks (\
+db.run(" CREATE TABLE IF NOT EXISTS playlists_songs (\
     id INTEGER PRIMARY KEY AUTOINCREMENT, \
     playlistId INTEGER NOT NULL, \
-    userId INTEGER NOT NULL )\
+    song_id INTEGER NOT NULL )\
     ")
 
 exports.getAllAccounts = function(callback){
@@ -117,3 +123,53 @@ exports.getPlaylistByUserId = function(userId, callback){
         }
     })
 }
+
+exports.updatePlaylist = function(playlist, id, callback){
+    console.log("article in update article: ", playlist)
+    const query = 'UPDATE playlists SET playlistname = ? WHERE id = ?'
+    const values = [playlist.playlistname, id]
+    
+    db.run(query, values, function(error, results){
+        if(error){
+            console.log("Error updating playlist: ", error)
+            callback(['ERR_DATABASE'], null)
+        }
+        else{
+            //inserId?------------------------------------------------------------------------------
+            console.log("updated playlist with id :", results.insertId)
+            callback([], results.insertId)
+        }
+
+    })
+}
+
+exports.deletePlaylist = function(playlistId, callback){
+    const query = `DELETE FROM playlists WHERE id = ?`
+    const values = [playlistId]
+    console.log(values);
+
+    db.run(query, values, function(error){
+        if(error){
+            console.log(error);
+            callback(['ERR_DATABASE'])
+        }
+        else{
+            console.log("DELETED PLAYLIST");
+            callback([])
+        }
+    })
+
+}
+
+//INSERT INTO songs (title, artist) VALUES ("Landslide", "Fleetwood Mac");
+//INSERT INTO songs (title, artist) VALUES ("Break My Stride", "Matthew Wilder");
+//INSERT INTO songs (title, artist) VALUES ("Blood Red Roses", "Rod Stewart");
+//INSERT INTO songs (title, artist) VALUES ("Yesterday", "The Beatles");
+//INSERT INTO songs (title, artist) VALUES ("Steven", "Alice Cooper");
+//INSERT INTO songs (title, artist) VALUES ("All the small things", "Blink-182");
+//INSERT INTO songs (title, artist) VALUES ("Grenade", "Bruno Mars");
+//INSERT INTO songs (title, artist) VALUES ("Purple Rain", "Prince");
+//INSERT INTO songs (title, artist) VALUES ("Viva La Vida", "Coldplay");
+//INSERT INTO songs (title, artist) VALUES ("Eye of the Tiger", "Fussball Hits");
+//INSERT INTO songs (title, artist) VALUES ("Beat it", "Michael Jackson");
+//INSERT INTO songs (title, artist) VALUES ("Gettin' Jiggy Wit It", "Will Smith");

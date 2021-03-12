@@ -1,5 +1,7 @@
 const express = require('express')
 const db = require('../db')
+var bcrypt = require('bcryptjs');
+const saltRounds = 10;
 
 const router = express.Router()
 
@@ -39,16 +41,17 @@ router.post("/login", function(request, response){
                 console.log("ERROR MESSAGE: ", error)
                 response.render("login.hbs")
             }else{
-                if(account.enteredPassword == accountFromDb.password){
-                    request.session.isLoggedIn = true
+                bcrypt.compare(account.enteredPassword, accountFromDb.password, function(err, res) {
+                    if(res){
+                        request.session.isLoggedIn = true
                     request.session.user = accountFromDb.username
                     request.session.userEmailadress = accountFromDb.email
                     request.session.userId = accountFromDb.id
                     response.redirect("/account/overview")
-                }else{
-                    //wrong password
-                    response.render("login.hbs")
-                }
+                    }else{
+                        response.render("login.hbs")
+                    }
+                });
             }
         })
     }
@@ -64,23 +67,30 @@ router.post("/signup", function(request, response){
         confirmationPassword: request.body.confirmationPassword
     }  
 	
+    
 	const errors = getValidationErrors(account)
 	
 	if(errors.length == 0){
-		
-		db.createAccount(account, function(error, accountID){
-			if(error){
-                const model = {
-                    error: error
-                }
-				console.log("error router:" , error)
-                response.render("signup.hbs", model)
-			}else{
-				console.log("createAccount:", accountID)
-                response.render("login.hbs")
 
-			}
-		})
+        bcrypt.hash(account.password, saltRounds, function(err, hash) {
+            account.password = hash
+
+            db.createAccount(account, function(error, accountID){
+                if(error){
+                    const model = {
+                        error: error
+                    }
+                    console.log("error router:" , error)
+                    response.render("signup.hbs", model)
+                }else{
+                    console.log("createAccount:", accountID)
+                    response.render("login.hbs")
+    
+                }
+            })
+        });
+		
+		
 		
 	}else{
 		
@@ -122,6 +132,26 @@ router.get("/accounts", function(request, response){
 			}
 			console.log(model);
 			response.render("accounts.hbs", model)
+			
+		}
+		
+	})
+})
+
+router.get("/explore", function(request, response){
+
+    db.getAllPlaylists(function(error, playlists){
+		
+		if(error){
+			console.log("ERROR" , error);
+			
+			const model = {
+				errorOcurred: true
+			}
+			response.render("playlists.hbs", model)
+			
+		}else{
+			response.render("explore.hbs", {playlists})
 			
 		}
 		

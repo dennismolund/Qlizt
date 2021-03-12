@@ -22,7 +22,7 @@ router.post("", function(request, response){
             response.render("createPlaylist.hbs")
         }else{
             console.log("createdPlaylist:", playlistId)
-            response.render("overview.hbs")
+            response.redirect('../../account/overview');
 
         }
     })
@@ -57,6 +57,28 @@ router.get("/playlists", function(request, response){
 		}
 		
 	})
+})
+
+router.get("/playlist/:id", function(request, response){
+    //todo: Retrieve songs
+    const songs = ["Song 1", "Song 2", "song 3", "Song 12", "Song 23", "song 33"]
+
+    response.render("playlist.hbs", songs)
+
+})
+
+router.post('/delete/:id', function(request, response){
+
+    const playlistId = request.params.id
+    console.log("body", playlistId);
+    db.deletePlaylist(playlistId, function(error){
+        if(0<error.length){
+            console.log("error in deleteplaylist: ", error);
+            response.redirect('../../account/overview');
+        }else{
+            response.redirect('../../account/overview');
+        }
+    })
 })
 
 module.exports = router
