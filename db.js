@@ -16,21 +16,16 @@ db.run(" CREATE TABLE IF NOT EXISTS playlists (\
     id INTEGER PRIMARY KEY AUTOINCREMENT, \
     username VARCHAR(50) NOT NULL, \
     userId INTEGER NOT NULL, \
-    email VARCHAR(50) NOT NULL, \
-    playlistname VARCHAR(30) NOT NULL) \
-    ")
-
-db.run(" CREATE TABLE IF NOT EXISTS songs (\
-    id INTEGER PRIMARY KEY AUTOINCREMENT, \
-    title VARCHAR(50) NOT NULL, \
-    artist VARCHAR(50) NOT NULL)\
+    playlistname VARCHAR(30) NOT NULL, \
+    isPublic INTEGER NOT NULL) \
     ")
 
 //stores songs within playlists with playlistId as foreign key.
 db.run(" CREATE TABLE IF NOT EXISTS playlists_songs (\
     id INTEGER PRIMARY KEY AUTOINCREMENT, \
     playlistId INTEGER NOT NULL, \
-    song_id INTEGER NOT NULL )\
+    artist VARCHAR(50) NOT NULL, \
+    title VARCHAR(50) NOT NULL )\
     ")
 
 exports.getAllAccounts = function(callback){
@@ -93,8 +88,8 @@ exports.getAccountByUsername = function(enteredUsername, callback){
 
 exports.createPlaylist = function(model, callback){
 
-    const query = "INSERT INTO playlists (username, userId, email, playlistname) VALUES (?, ?, ?, ?)"
-	const values = [model.username, model.userId, model.email, model. playlistname]
+    const query = "INSERT INTO playlists (username, userId, playlistname, isPublic) VALUES (?, ?, ?, ?)"
+	const values = [model.username, model.userId, model.playlistname, model.isPublic]
 
     db.run(query, values, function(error){
 		
@@ -118,7 +113,7 @@ exports.getPlaylistByUserId = function(userId, callback){
             callback(error, null)
         }
         else{
-            console.log("Retrieved playlists from DB: ", playlistsFromDb);
+            //console.log("Retrieved playlists from DB: ", playlistsFromDb);
             callback(null, playlistsFromDb)
         }
     })
@@ -136,7 +131,7 @@ exports.updatePlaylist = function(playlist, id, callback){
         }
         else{
             //inserId?------------------------------------------------------------------------------
-            console.log("updated playlist with id :", results.insertId)
+            //console.log("updated playlist with id :", results.insertId)
             callback([], results.insertId)
         }
 
@@ -144,9 +139,10 @@ exports.updatePlaylist = function(playlist, id, callback){
 }
 
 exports.deletePlaylist = function(playlistId, callback){
-    const query = `DELETE FROM playlists WHERE id = ?`
+    const query = "DELETE FROM playlists WHERE id = ?"
+    const query2 = "DELETE FROM playlists_songs where playlistId = ?"
+
     const values = [playlistId]
-    console.log(values);
 
     db.run(query, values, function(error){
         if(error){
@@ -154,22 +150,63 @@ exports.deletePlaylist = function(playlistId, callback){
             callback(['ERR_DATABASE'])
         }
         else{
-            console.log("DELETED PLAYLIST");
-            callback([])
+            db.run(query2, values, function(error){
+                if(error){
+                    console.log(error);
+                    callback(['ERR_DATABASE'])
+                }
+                else{
+                    callback([])
+                }
+            })
+        }
+    })
+
+
+}
+
+exports.addSongToPlaylist = function(playlistId, title, artist, callback){
+    const query = "INSERT INTO playlists_songs (playlistId, title, artist) VALUES (?,?,?)"
+    const values = [playlistId, title, artist]
+    
+
+    db.run(query, values, function(error){
+        if(error){
+            console.log(error);
+            callback(['ERR_DATABASE'])
+        }
+        else{
+            callback(null)
         }
     })
 
 }
 
-//INSERT INTO songs (title, artist) VALUES ("Landslide", "Fleetwood Mac");
-//INSERT INTO songs (title, artist) VALUES ("Break My Stride", "Matthew Wilder");
-//INSERT INTO songs (title, artist) VALUES ("Blood Red Roses", "Rod Stewart");
-//INSERT INTO songs (title, artist) VALUES ("Yesterday", "The Beatles");
-//INSERT INTO songs (title, artist) VALUES ("Steven", "Alice Cooper");
-//INSERT INTO songs (title, artist) VALUES ("All the small things", "Blink-182");
-//INSERT INTO songs (title, artist) VALUES ("Grenade", "Bruno Mars");
-//INSERT INTO songs (title, artist) VALUES ("Purple Rain", "Prince");
-//INSERT INTO songs (title, artist) VALUES ("Viva La Vida", "Coldplay");
-//INSERT INTO songs (title, artist) VALUES ("Eye of the Tiger", "Fussball Hits");
-//INSERT INTO songs (title, artist) VALUES ("Beat it", "Michael Jackson");
-//INSERT INTO songs (title, artist) VALUES ("Gettin' Jiggy Wit It", "Will Smith");
+exports.getSongsByPlaylistId = function(playlistId, callback){
+    const query = "SELECT * FROM playlists_songs WHERE playlistId = ?"
+    const value = [playlistId]
+
+    db.all(query, value, function(error, songs){
+        if(error){
+            callback(error, null)
+        }else{
+            
+            callback(null,songs)
+        }
+    })
+}
+
+exports.deleteSongFromPlaylist = function(songId, callback){
+    const query = "DELETE FROM playlists_songs WHERE id = ?"
+    const value = [songId]
+
+    db.run(query, value, function(error){
+        if(error){
+            callback(error)
+        }else{
+            callback([])
+        }
+    })
+}
+
+

@@ -101,26 +101,29 @@
     <div class="tile">
       <div class="tile is-parent">
         <div class="tile is-child">
-           <h1 class="has-text-centered title is-2 mt-4">Welcome Home</h1>
+           <h1 class="has-text-centered title is-2 mt-4">Playlist</h1>
 
-           <div class="section mr-4">
-              <div class="is-mobile box">
-                  <div class="column">Titel</div>
-                  <div class="line"></div>
-              <div class="column">hej</div>
-              <div class="line"></div>
-              <div class="column">hej</div>
-              <div class="line"></div>
-              <div class="column">hej</div>
-              <div class="line"></div>
-              <div class="column">hej</div>
-              <div class="line"></div>
-              <div class="column">hej</div>
-              <div class="line"></div>
-              
+            <div class="section mr-4">
+                <div class="is-mobile box">
                 
-            
-            
+                {{#each songs}}
+                <div class="columns is-vcentered">
+                  <div class="column">
+                    <p> <b>Title: </b>{{this.title}}</p>
+                    <p> <b>Artist: </b>{{this.artist}}</p>
+                  </div>
+                  <div class="column">
+                    <form action="/playlist/removeSongFromPlaylist/{{this.id}}" method="post">
+                      <input type="hidden" name="playlistId" value="{{../playlistId}}">
+                      <button type="submit">delete</button> 
+                    </form>
+                    </div>
+                  
+                </div>
+                <div class="line"></div>
+                {{/each}}
+
+                
             </div>
 
            </div>

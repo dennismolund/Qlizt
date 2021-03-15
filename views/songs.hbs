@@ -109,29 +109,49 @@
     <div class="tile">
       <div class="tile is-parent">
         <div class="tile is-child">
-           <h1 class="has-text-centered title is-2 mt-4">Explore</h1>
+           <h1 class="has-text-centered title is-2 mt-4">Songs</h1>
 
            <div class="section mr-4">
-            <div class="columns is-multiline is-mobile">
-                {{#each playlists}}
-                    <div class="column is-one-fifth">
-                    <div class="card">
-                        <div class="card-image">
-                            <figure class="image is-4by3">
-                                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                            </figure>
+                <div class="is-mobile box">
+                
+                {{#each songs}}
+                {{#each this}}
+                <div class="column">
+                   <p> <b>Title: </b>{{this.title}}</p>
+                   <p> <b>Artist: </b>{{this.artist}}</p>
+
+                    <div class="dropdown is-hoverable">
+                        <div class="dropdown-trigger">
+                            <div aria-haspopup="true" aria-controls="dropdown-menu4">
+                                
+                                
+                                <button> <b>Add to playlist</b> </button>
+                                
+                            </div>
                         </div>
-                        <div class="card-content">
-                            <p>{{this.playlistname}}</p>
-                            <p>Created by: {{this.username}}</p>
+                        <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+                            <div class="dropdown-content">
+                                {{#each ../../playlists}}
+                                <div class="dropdown-item">
+                                    <form action="/playlist/addSongToPlaylist" method="post">
+                                        <input type="hidden" name="playlistId" value="{{this.id}}" />
+                                        <input type="hidden" name="title" value="{{../this.title}}" />
+                                        <input type="hidden" name="artist" value="{{../this.artist}}" />
+                                        <button class="button is-white" type="submit">{{this.playlistname}}</button>
+                                    </form>  
+                                </div>
+                                {{/each}}
+                                
+                            </div>
                         </div>
                     </div>
-                    </div>
+                </div>
+                <div class="line"></div>
+                {{/each}}
                 {{/each}}
             </div>
-            
-          
-            </div>
+
+           </div>
 
 
 

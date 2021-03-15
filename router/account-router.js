@@ -1,5 +1,6 @@
 const express = require('express')
 const db = require('../db')
+const songs = require('../songs')
 var bcrypt = require('bcryptjs');
 const saltRounds = 10;
 
@@ -15,7 +16,7 @@ router.get("/overview", function(request, response){
         if(error){
             response.render("overview.hbs")
         }else{
-            console.log("INSIDE ROUTER: " , playlistsFromDb);
+            //console.log("INSIDE ROUTER: " , playlistsFromDb);
         
             response.render("overview.hbs", {playlists: playlistsFromDb})
         }
@@ -83,7 +84,7 @@ router.post("/signup", function(request, response){
                     console.log("error router:" , error)
                     response.render("signup.hbs", model)
                 }else{
-                    console.log("createAccount:", accountID)
+                    //console.log("createAccount:", accountID)
                     response.render("login.hbs")
     
                 }
@@ -130,7 +131,7 @@ router.get("/accounts", function(request, response){
 			const model = {
 				accounts: accounts
 			}
-			console.log(model);
+			//console.log(model);
 			response.render("accounts.hbs", model)
 			
 		}
@@ -151,7 +152,12 @@ router.get("/explore", function(request, response){
 			response.render("playlists.hbs", model)
 			
 		}else{
-			response.render("explore.hbs", {playlists})
+            const model = {
+                playlists: playlists
+                
+            }
+            
+			response.render("explore.hbs", model)
 			
 		}
 		
