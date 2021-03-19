@@ -161,8 +161,6 @@ exports.deletePlaylist = function(playlistId, callback){
             })
         }
     })
-
-
 }
 
 exports.addSongToPlaylist = function(playlistId, title, artist, callback){

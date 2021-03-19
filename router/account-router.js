@@ -94,7 +94,6 @@ router.post("/signup", function(request, response){
 		
 		
 	}else{
-		
 		const model = {
 			errors: errors
 		}
@@ -103,7 +102,6 @@ router.post("/signup", function(request, response){
 		response.render("signup.hbs", model)
 		
 	}
-	
 })
 
 router.get("/logout", function(request, response){
@@ -152,10 +150,21 @@ router.get("/explore", function(request, response){
 			response.render("playlists.hbs", model)
 			
 		}else{
+
+            
+            playlists.forEach(playlists => {
+                if(playlists.isPublic == 0){
+                    playlists.isPublic = false
+                }else{
+                    playlists.isPublic = true
+                }
+                
+            })
+            
             const model = {
                 playlists: playlists
-                
             }
+
             
 			response.render("explore.hbs", model)
 			
