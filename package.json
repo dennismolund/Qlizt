@@ -21,6 +21,7 @@
     "express-handlebars": "^5.2.0",
     "express-session": "^1.17.1",
     "express-sessions": "^1.0.6",
+    "jsonwebtoken": "^8.5.1",
     "nodemon": "^2.0.7",
     "sessions": "0.0.2-7",
     "sqlite3": "^5.0.1"
