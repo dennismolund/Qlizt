@@ -1,75 +1,14 @@
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a class="navbar-item" href="/">
-       <img class="ml-6" src="images/Brand.jpg" alt="Qlizt"/> 
-    </a>
-  </div>
-
-  <div id="navbar" class="navbar-menu mr-4">
-    <div class="navbar-end mr-6">
-      <div class="navbar-item">
-        <div class="columns is-variable is-1-mobile is-0-tablet is-3-desktop is-8-widescreen is-2-fullhd is-vcentered ">
-          <div class="columns is-centered">
-            {{#if isLoggedIn}}
-              <div class="dropdown is-hoverable">
-                <div class="dropdown-trigger">
-                  <div aria-haspopup="true" aria-controls="dropdown-menu4">
-                    <span class="icon-text">
-                    <span class="icon">
-                      <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                    </span>
-                    <span> <b>{{activeUsername}}</b> </span>
-                    <span class="icon ml-2">
-                      <i class="fa fa-chevron-down" aria-hidden="true"></i>
-                    </span>
-                    </span>
-                  </div>
-                </div>
-                <div class="dropdown-menu" id="dropdown-menu4" role="menu">
-                  <div class="dropdown-content">
-                    <div class="dropdown-item">
-                      <a href="/account/overview"> <p class="subtitle is-6">Home</p></a>
-                    </div>
-                    <div class="dropdown-item">
-                      <a href="/account/logout"> <p class="subtitle is-6">Log out</p> </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            {{else}}
-              <a href="/account/signup"><strong>Sign up</strong></a>
-              <div class="pr-5 pl-5">
-                  <span class="vertical-line"></span>
-              </div>
-              <a href="/account/login"><strong>Log in</strong></a>
-            
-            {{/if}}
-            </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</nav>
-<span class="line-black"></span>
-
+{{> header}}
 <section class="section ">
-
 <div class="columns is-vcentered">
     <div class="column"></div>
-
     <div class="column">
         <p class="title is-1">Contact information</p>
-   
         <p class="subtitle is-3 ml-6 mt-3">Qlizt headquarters</p>
         <p class="subtitle is-5 ml-6">794 Green st <br> San Francisco, California(CA), 94133</p>
-
         <p class="subtitle is-5 ml-6"> <b>Email:</b> inquaries@Qlizt.com  <br> <b>Phone:</b> +1-970-469-1536</p>
-
     </div>
-
     <div class="column"></div>
-    
 </div>
-
-
 </section>
+{{> footer}}

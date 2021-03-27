@@ -1,10 +1,7 @@
 <section class="section">
-
 <div class="level">
   <a class="level-item" href="/"><img src="/images/Brand.jpg" alt="Qlizt"/></a>
 </div>
-
-
   <form action="" method="POST">
     <div class="columns is-vcentered ">
       <div class="column"></div>
@@ -12,11 +9,12 @@
         <div class="has-text-centered">
           <span class="line"></span>
           <h3 class="subtitle is-3 mt-3">  Sign up for Qlizt</h3>
-          <h3>{{error}}</h3>
         </div>
-
         <section class="box">
           <div class="field">
+            {{#each errors}}
+              <p class="has-text-centered">{{this}}</p>
+              {{/each}}
             <label class="label">Username</label>
             <div class="control has-icons-right">
               <input class="input" type="text" name="username" value="{{username}}" placeholder="Create your username">
@@ -77,10 +75,10 @@
               <a class="button is-vcentered is-rounded is-outlined" href="/account/login">Log in</a>
           </div>
           </div>
-          
         </section>
       </div>
       <div class="column"></div>
     </div>
   </form>
 </section>
+{{> footer}}

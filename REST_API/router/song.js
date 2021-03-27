@@ -1,27 +1,24 @@
 const express = require('express')
-const db = require('../../db')
+const db = require('../../data-access/song-repository')
 
 const { authenticateToken } = require('../middleware/authenticateToken')
 
 const router = express.Router()
 
-router.get("/", authenticateToken, function(request, response){
-    response.status(404).json("NOT FIXED YET")
-})
+//add song to playlist
+router.post("/:id", authenticateToken, function(request, response){
 
-router.post("/", authenticateToken, function(request, response){
-
-    const playlistId = request.body.playlistId
+    const playlistId = request.params.id
     const title = request.body.title
     const artist = request.body.artist
 
     db.addSongToPlaylist(playlistId, title, artist, function(error){
         if (error) {
-			response.status(400).json({
-				"error": error
+			response.status(400).send({
+				error: "invalid_grant" 
 			})
 		} else {
-			response.status(200).json("added song to playlist")
+			response.status(204).json("added song to playlist")
 		}
     })
 })

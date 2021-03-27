@@ -1,5 +1,5 @@
 const express = require('express')
-const db = require('../../db')
+const db = require('../../data-access/account-repository')
 const jwt = require("jsonwebtoken");
 var bcrypt = require('bcryptjs');
 
@@ -26,60 +26,42 @@ router.get("/accounts", authenticateToken, function(request, response){
 
 router.post("/login", function(request, response){
 
+    const grant_type = request.body.grant_type
     const username = request.body.username
     const password = request.body.password
 
-    const account = {username: username}
-    
+    if(grant_type != "password"){
+        response.status(400).send({
+            error: "unsupported_grant_type"
+        })
+    }
+
     db.getAccountByUsername(username, function(error, accountFromDb){
         if(error){
             console.log("ERROR MESSAGE: ", error)
             console.log(error)
                     response.status(400).send({
-                        error: error
+                        error: "invalid_grant" //wrong username
                     })
         }else{
-            console.log("account: ", accountFromDb);
             bcrypt.compare(password, accountFromDb.password, function(err, res) {
                 if(res){
-
-                    const accessToken = jwt.sign(account, SECRET)
                     const idToken = {
-                        accountId: accountFromDb.id,
-                        username: accountFromDb.username
+                        sub: accountFromDb.id,
+                        preferred_username: accountFromDb.username
                     }
-
-                    /*const idToken = jwt.sign({
-                        id: accountFromDb.id,
-                        username: accountFromDb.username,
-                        email: accountFromDb.username
-                    }, secret)*/
+                    const accessToken = jwt.sign(idToken, SECRET)
 
                     response.status(200).send({
                         accessToken: accessToken,
+                        token_type: "Bearer",
                         idToken
                     });
-
                 }else{
-                    console.log("error in bcrrypt");
                     response.status(400).send({
-                        error: err
+                        error: "invalid_grant" //wrong password
                     })
-                    /*
-                    const accessToken = jwt.sign({
-                        accountId: accountFromDb.id
-                    }, secret)
-                    
-                    const idToken = jwt.sign({
-                        id: accountFromDb.id,
-                        username: accountFromDb.username,
-                        email: accountFromDb.username
-                    }, secret)
-                    
-                    response.status(200).json({
-                        accessToken: accessToken,
-                        idToken: idToken
-                    })*/
+                   
                 }
             })
         }

@@ -1,5 +1,5 @@
 const express = require('express')
-const db = require('../db')
+const db = require('../data-access/account-repository')
 const songs = require('../songs')
 var bcrypt = require('bcryptjs');
 const saltRounds = 10;
@@ -10,22 +10,29 @@ router.get("/login", function(request, response){
     response.render("login.hbs")
 })
 
-router.get("/overview", function(request, response){
-
-    db.getPlaylistByUserId(request.session.userId, function(error, playlistsFromDb){
-        if(error){
-            response.render("overview.hbs")
-        }else{
-            //console.log("INSIDE ROUTER: " , playlistsFromDb);
-        
-            response.render("overview.hbs", {playlists: playlistsFromDb})
-        }
-    })
-
-})
 
 router.get("/signup", function(request, response){
     response.render("signup.hbs")
+})
+
+router.get("/settings", function(request, response){
+    if(!request.session.userId) return response.render("home.hbs")
+    const account = {
+        username: request.session.username,
+        email: request.session.email
+    }
+    response.render("settings.hbs", {account})
+})
+
+router.post("/updateEmail", function(request, response){
+    const newEmail = request.body.email
+    console.log(newEmail);
+
+    db.updateEmail(newEmail, request.session.userId, function(error){
+        if(error){
+            response.render("settings.hbs", {errors: error})
+        }else response.render("overview.hbs")
+    })
 })
 
 router.post("/login", function(request, response){
@@ -40,17 +47,18 @@ router.post("/login", function(request, response){
         db.getAccountByUsername(account.enteredUsername, function(error, accountFromDb){
             if(error){
                 console.log("ERROR MESSAGE: ", error)
-                response.render("login.hbs")
+                response.render("login.hbs", {error: "Wrong username"})
             }else{
                 bcrypt.compare(account.enteredPassword, accountFromDb.password, function(err, res) {
                     if(res){
                         request.session.isLoggedIn = true
-                    request.session.user = accountFromDb.username
-                    request.session.userEmailadress = accountFromDb.email
-                    request.session.userId = accountFromDb.id
-                    response.redirect("/account/overview")
+                        request.session.user = accountFromDb.username
+                        request.session.userEmailadress = accountFromDb.email
+                        request.session.userId = accountFromDb.id
+                        response.redirect("/playlist/overview")
                     }else{
-                        response.render("login.hbs")
+                        console.log("wrong password");
+                        response.render("login.hbs", {error: "Wrong password"})
                     }
                 });
             }
@@ -76,13 +84,10 @@ router.post("/signup", function(request, response){
         bcrypt.hash(account.password, saltRounds, function(err, hash) {
             account.password = hash
 
-            db.createAccount(account, function(error, accountID){
-                if(error){
-                    const model = {
-                        error: error
-                    }
-                    console.log("error router:" , error)
-                    response.render("signup.hbs", model)
+            db.createAccount(account, function(errors, accountID){
+                if(errors){
+                    console.log("error router:" , errors)
+                    response.render("signup.hbs", {errors})
                 }else{
                     //console.log("createAccount:", accountID)
                     response.render("login.hbs")
@@ -94,13 +99,8 @@ router.post("/signup", function(request, response){
 		
 		
 	}else{
-		const model = {
-			errors: errors
-		}
         console.log("error:" , errors)
-		
-		response.render("signup.hbs", model)
-		
+		response.render("signup.hbs", {errors})
 	}
 })
 
@@ -137,41 +137,7 @@ router.get("/accounts", function(request, response){
 	})
 })
 
-router.get("/explore", function(request, response){
 
-    db.getAllPlaylists(function(error, playlists){
-		
-		if(error){
-			console.log("ERROR" , error);
-			
-			const model = {
-				errorOcurred: true
-			}
-			response.render("playlists.hbs", model)
-			
-		}else{
-
-            
-            playlists.forEach(playlists => {
-                if(playlists.isPublic == 0){
-                    playlists.isPublic = false
-                }else{
-                    playlists.isPublic = true
-                }
-                
-            })
-            
-            const model = {
-                playlists: playlists
-            }
-
-            
-			response.render("explore.hbs", model)
-			
-		}
-		
-	})
-})
 
 module.exports = router
 
@@ -196,3 +162,4 @@ function getValidationErrors(account){
 	return errors
 	
 }
+

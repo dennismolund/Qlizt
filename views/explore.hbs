@@ -1,124 +1,21 @@
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a class="navbar-item" href="/">
-       <img class="ml-6" src="/images/Brand.jpg" alt="Qlizt"/> 
-    </a>
-  </div>
-
-  <div id="navbar" class="navbar-menu mr-4">
-    <div class="navbar-end mr-6">
-      <div class="navbar-item">
-        <div class="columns is-variable is-1-mobile is-0-tablet is-3-desktop is-8-widescreen is-2-fullhd is-vcentered ">
-          <div class="columns is-centered">
-            {{#if isLoggedIn}}
-              <div class="dropdown is-hoverable">
-                <div class="dropdown-trigger">
-                  <div aria-haspopup="true" aria-controls="dropdown-menu4">
-                    <span class="icon-text">
-                    <span class="icon">
-                      <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                    </span>
-                    <span> <b>{{activeUsername}}</b> </span>
-                    <span class="icon ml-2">
-                      <i class="fa fa-chevron-down" aria-hidden="true"></i>
-                    </span>
-                    </span>
-                  </div>
-                </div>
-                <div class="dropdown-menu" id="dropdown-menu4" role="menu">
-                  <div class="dropdown-content">
-                    <div class="dropdown-item">
-                      <a href="/account/overview"> <p class="subtitle is-6">Home</p></a>
-                    </div>
-                    <div class="dropdown-item">
-                      <a href="/account/logout"> <p class="subtitle is-6">Log out</p> </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            {{else}}
-              <a href="/account/signup"><strong>Sign up</strong></a>
-              <div class="pr-5 pl-5">
-                  <span class="vertical-line"></span>
-              </div>
-              <a href="/account/login"><strong>Log in</strong></a>
-            
-            {{/if}}
-            </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</nav>
-<span class="line-black"></span>
-
+{{> header}}
 <div class="tile is-ancestor">
-
-    <div class="tile is-parent" id="accountMenu">
-    <div class="tile is-child box ">
-        <div class="content"> 
-            <div class="column">
-                <figure class="image is-128x128 ">
-                    <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
-                    
-                    {{#if isLoggedIn}}
-                        {{activeUsername}}
-                    {{/if}}
-                    
-                    
-                    
-                </figure>
-            </div>
-        
-            <div class="column mt-5"> 
-                <span class="icon-text">
-                    <span class="icon">
-                        <i class="fa fa-home" aria-hidden="true"></i>
-                    </span>
-                    <a href="/account/overview"><span>Home</span></a>
-                </span>
-            </div>
-
-            <div class="column">
-                <span class="icon-text">
-                    <span class="icon">
-                        <i class="fa fa-music" aria-hidden="true"></i>
-                    </span>
-                    <a href="/account/explore"><span>Explore Playlists</span></a>
-                </span>
-            </div>
-
-            <div class="column">
-                <span class="icon-text">
-                    <span class="icon">
-                        <i class="fa fa-music" aria-hidden="true"></i>
-                    </span>
-                    <a href="/playlist/songs"><span>Songs</span></a>
-                </span>
-            </div>
-            
-         <a href="/playlist"><button class="button is-inverted">+ New playlist</button></a>
-      </div>
-    </div> 
-  </div>
-  
-  
-  
-
+  {{#if isLoggedIn}}
+    {{> accountMenu}}
+  {{/if}}
   <div class="tile is-vertical is-10 " id="contentOverview">
     <div class="tile">
       <div class="tile is-parent">
         <div class="tile is-child">
-           <h1 class="has-text-centered title is-2 mt-4">Explore</h1>
-
+           
            <div class="section mr-4">
-            <div class="columns is-multiline is-mobile">
+              <h1 class="title is-3">Explore</h1>
+              <div class="columns is-multiline is-mobile">
                 {{#each playlists}}
-                  {{#if this.isPublic}}
-                  
-                    <div class="column is-one-fifth">
+                  {{#if this.isPublic}}     
+                    <div class="column is-one-fifth">  
                     <div class="card">
-                      <a href="/playlist/playlist/{{this.id}}">
+                      <a href="/song/{{this.id}}/{{this.userId}}">        
                         <div class="card-image">
                             <figure class="image is-4by3">
                                 <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
@@ -134,16 +31,10 @@
                     {{/if}}
                 {{/each}}
             </div>
-            
-          
             </div>
-
-
-
         </div>
-        
       </div>
     </div>
   </div>
-
 </div>
+{{> footer}}

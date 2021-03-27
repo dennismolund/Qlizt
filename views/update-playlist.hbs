@@ -1,0 +1,46 @@
+{{> header}}
+
+ <section class="section">
+        <div class="container has-text-centered">
+            <h2 class="title">Edit playlist</h2>
+            
+    <form action="/playlist/update/{{playlistId}}" method="post">
+        <div class="columns is-vcentered">
+      <div class="login column is-4 ">
+        <section class="section">
+
+          <div class="field">
+            <label class="label">Edit Playlist name</label>
+            {{#if error}}
+              <p>{{error}}</p>
+            {{/if}}
+            <div class="control">
+              <input class="input" type="text" name="playlistName" placeholder="Write new name"> 
+            </div>
+          </div>
+
+          {{#ifEquals isPublic 1}}
+          <label class="checkbox">
+            <input type="checkbox" name="checkbox" id="checkbox" checked="true" value="0">
+            Change From public to private
+          </label>
+          {{/ifEquals}}
+          {{#ifEquals isPublic 0}}
+          <label class="checkbox">
+            <input type="checkbox" name="checkbox" id="checkbox" value="1">
+            Change from private to public
+          </label>
+          {{/ifEquals}}
+          
+          <div class="field">
+            <div class="has-text-centered">
+              <input class="button is-vcentered is-rounded is-outlined" type="submit" value="Done"></input>
+            </div>
+          </div>
+          
+        </section>
+      </div>
+    </div>
+    </form>
+    </section>
+    {{> footer}}

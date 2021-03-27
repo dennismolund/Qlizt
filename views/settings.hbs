@@ -1,0 +1,54 @@
+{{> header}}
+
+<div class="tile is-ancestor">
+    {{#if isLoggedIn}}
+      {{> accountMenu}}
+    {{/if}}
+  <div class="tile is-vertical is-10 " id="contentOverview">
+    <div class="tile">
+      <div class="tile is-parent">
+        <div class="tile is-child">
+          
+        
+    <div class="columns is-vcentered ">
+      <div class="column"></div>
+      <div class="column">
+        <div class="has-text-centered">
+          <h3 class="subtitle is-3 mt-3">  Edit account</h3>
+        </div>
+        <section class="box">
+          <div class="field">
+            {{#each errors}}
+              <p class="has-text-centered">{{this}}</p>
+              {{/each}}
+
+        <form action="/account/updateEmail" method="POST">
+          <div class="field">
+            <label class="label">emailadress</label>
+            <div class="control has-icons-right">
+              <input class="input" type="text" name="email" placeholder="Write your new emailadress here">
+              <span class="icon is-small is-right">
+                <i class="fa fa-envelope"></i>
+              </span>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="has-text-centered">
+              <input class="button is-vcentered is-rounded is-outlined" type="submit" value="Change email"></input>
+            </div>
+          </div>
+          </form>
+                 
+        </section>
+      </div>
+      <div class="column"></div>
+    </div>
+ 
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{> footer}}

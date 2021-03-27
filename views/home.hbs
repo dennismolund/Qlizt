@@ -1,63 +1,13 @@
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a class="navbar-item" href="/">
-       <img class="ml-6" src="images/Brand.jpg" alt="Qlizt"/> 
-    </a>
-  </div>
-
-  <div id="navbar" class="navbar-menu mr-4">
-    <div class="navbar-end mr-6">
-      <div class="navbar-item">
-        <div class="columns is-variable is-1-mobile is-0-tablet is-3-desktop is-8-widescreen is-2-fullhd is-vcentered ">
-          <div class="columns is-centered">
-            {{#if isLoggedIn}}
-              <div class="dropdown is-hoverable">
-                <div class="dropdown-trigger">
-                  <div aria-haspopup="true" aria-controls="dropdown-menu4">
-                    <span class="icon-text">
-                    <span class="icon">
-                      <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                    </span>
-                    <span> <b>{{activeUsername}}</b> </span>
-                    <span class="icon ml-2">
-                      <i class="fa fa-chevron-down" aria-hidden="true"></i>
-                    </span>
-                    </span>
-                  </div>
-                </div>
-                <div class="dropdown-menu" id="dropdown-menu4" role="menu">
-                  <div class="dropdown-content">
-                    <div class="dropdown-item">
-                      <a href="/account/overview"> <p class="subtitle is-6">Home</p></a>
-                    </div>
-                    <div class="dropdown-item">
-                      <a href="/account/logout"> <p class="subtitle is-6">Log out</p> </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            {{else}}
-              <a href="/account/signup"><strong>Sign up</strong></a>
-              <div class="pr-5 pl-5">
-                  <span class="vertical-line"></span>
-              </div>
-              <a href="/account/login"><strong>Log in</strong></a>
-            
-            {{/if}}
-            </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</nav>
-<span class="line-black"></span>
-
+{{> header}}
 <section class="section">
   <div class="container has-text-centered">
-    <h2 class="title is-1">Sharing is Qaring</h2>
-
-    <p class="subtitle mt-4 is-4">Share your music playlists with the World</p>
-    
-
+    <h2 class="title is-1">Sharing is Caring</h2>
+      <p class="subtitle is-4 ml-6 mt-3">Qlizt makes it easy to find the the right music playlists for your mood. <br> You can also create 
+            and share your own music playlists.
+      </p>
+      <form action="/account/signup" method="get">
+      <button class="button is-link" type="submit">Join Qlizt Now</button>
+      </form>
   </div>
 </section>
+{{> footer}}
