@@ -1,0 +1,433 @@
+@prefix dbo: <https://dbpedia.org/dboology/>.
+@prefix m3: <http://purl.org/iot/vocab/m3-lite#>.
+@prefix mo: <http://purl.org/dboology/mo/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix res: <http://dbpedia.org/resource/>.
+
+<http://dbpedia.org/resource/0.958333333333333>
+    a dbo:Song;
+    m3:BeatPerMinute "96";
+    m3:Decibel "-5";
+    mo:MusicArtist "Maluma";
+    foaf:name "0.958333333333333";
+    dbo:genre "reggaeton".
+res:7_rings
+    a dbo:Song;
+    m3:BeatPerMinute "140";
+    m3:Decibel "-11";
+    mo:MusicArtist "Ariana Grande";
+    foaf:name "7 rings";
+    dbo:genre "dance pop".
+res:Ali_Gatie a foaf:person.
+
+<http://dbpedia.org/resource/Antisocial_(with_Travis_Scott)>
+    a dbo:Song;
+    m3:BeatPerMinute "152";
+    m3:Decibel "-5";
+    mo:MusicArtist "Ed Sheeran";
+    foaf:name "Antisocial (with Travis Scott)";
+    dbo:genre "pop".
+res:Anuel_AA a foaf:person.
+
+res:Ariana_Grande a foaf:person.
+
+res:Bad_Bunny a foaf:person.
+
+res:bad_guy
+    a dbo:Song;
+    m3:BeatPerMinute "135";
+    m3:Decibel "-11";
+    mo:MusicArtist "Billie Eilish";
+    foaf:name "bad guy";
+    dbo:genre "electropop".
+<http://dbpedia.org/resource/bad_guy_(with_Justin_Bieber)>
+    a dbo:Song;
+    m3:BeatPerMinute "135";
+    m3:Decibel "-11";
+    mo:MusicArtist "Billie Eilish";
+    foaf:name "bad guy (with Justin Bieber)";
+    dbo:genre "electropop".
+<http://dbpedia.org/resource/Beautiful_People_(feat._Khalid)>
+    a dbo:Song;
+    m3:BeatPerMinute "93";
+    m3:Decibel "-8";
+    mo:MusicArtist "Ed Sheeran";
+    foaf:name "Beautiful People (feat. Khalid)";
+    dbo:genre "pop".
+res:Billie_Eilish a foaf:person.
+
+<http://dbpedia.org/resource/boyfriend_(with_Social_House)>
+    a dbo:Song;
+    m3:BeatPerMinute "190";
+    m3:Decibel "-4";
+    mo:MusicArtist "Ariana Grande";
+    foaf:name "boyfriend (with Social House)";
+    dbo:genre "dance pop".
+res:Call_You_Mine
+    a dbo:Song;
+    m3:BeatPerMinute "104";
+    m3:Decibel "-6";
+    mo:MusicArtist "The Chainsmokers";
+    foaf:name "Call You Mine";
+    dbo:genre "edm".
+res:Callaita
+    a dbo:Song;
+    m3:BeatPerMinute "176";
+    m3:Decibel "-5";
+    mo:MusicArtist "Bad Bunny";
+    foaf:name "Callaita";
+    dbo:genre "reggaeton".
+res:China
+    a dbo:Song;
+    m3:BeatPerMinute "105";
+    m3:Decibel "-4";
+    mo:MusicArtist "Anuel AA";
+    foaf:name "China";
+    dbo:genre "reggaeton flow".
+res:Chris_Brown a foaf:person.
+
+res:Con_Altura
+    a dbo:Song;
+    m3:BeatPerMinute "98";
+    m3:Decibel "-4";
+    mo:MusicArtist "ROSAL\u00cdA";
+    foaf:name "Con Altura";
+    dbo:genre "r&b en espanol".
+res:Con_Calma
+    a dbo:Song;
+    m3:BeatPerMinute "94";
+    m3:Decibel "-3";
+    mo:MusicArtist "Daddy Yankee";
+    foaf:name "Con Calma";
+    dbo:genre "latin".
+<http://dbpedia.org/resource/Cross_Me_(feat._Chance_the_Rapper_&_PnB_Rock)>
+    a dbo:Song;
+    m3:BeatPerMinute "95";
+    m3:Decibel "-6";
+    mo:MusicArtist "Ed Sheeran";
+    foaf:name "Cross Me (feat. Chance the Rapper & PnB Rock)";
+    dbo:genre "pop".
+res:Daddy_Yankee a foaf:person.
+
+res:Dance_Monkey
+    a dbo:Song;
+    m3:BeatPerMinute "98";
+    m3:Decibel "-6";
+    mo:MusicArtist "Tones and I";
+    foaf:name "Dance Monkey";
+    dbo:genre "australian pop".
+res:DJ_Snake a foaf:person.
+
+res:Drake a foaf:person.
+
+res:Ed_Sheeran a foaf:person.
+
+<http://dbpedia.org/resource/fuck,_i'm_lonely_(with_Anne-Marie)_-_from_13_Reasons_Why:_Season_3>
+    a dbo:Song;
+    m3:BeatPerMinute "95";
+    m3:Decibel "-6";
+    mo:MusicArtist "Lauv";
+    foaf:name
+    "fuck, i'm lonely (with Anne-Marie) - from 13 Reasons Why: Season 3";
+    dbo:genre "dance pop".
+<http://dbpedia.org/resource/Goodbyes_(Feat._Young_Thug)>
+    a dbo:Song;
+    m3:BeatPerMinute "150";
+    m3:Decibel "-4";
+    mo:MusicArtist "Post Malone";
+    foaf:name "Goodbyes (Feat. Young Thug)";
+    dbo:genre "dfw rap".
+res:Happier
+    a dbo:Song;
+    m3:BeatPerMinute "100";
+    m3:Decibel "-3";
+    mo:MusicArtist "Marshmello";
+    foaf:name "Happier";
+    dbo:genre "brostep".
+res:Higher_Love
+    a dbo:Song;
+    m3:BeatPerMinute "104";
+    m3:Decibel "-7";
+    mo:MusicArtist "Kygo";
+    foaf:name "Higher Love";
+    dbo:genre "edm".
+<http://dbpedia.org/resource/How_Do_You_Sleep?>
+    a dbo:Song;
+    m3:BeatPerMinute "111";
+    m3:Decibel "-5";
+    mo:MusicArtist "Sam Smith";
+    foaf:name "How Do You Sleep?";
+    dbo:genre "pop".
+<http://dbpedia.org/resource/I_Don't_Care_(with_Justin_Bieber)>
+    a dbo:Song;
+    m3:BeatPerMinute "102";
+    m3:Decibel "-5";
+    mo:MusicArtist "Ed Sheeran";
+    foaf:name "I Don't Care (with Justin Bieber)";
+    dbo:genre "pop".
+<http://dbpedia.org/resource/If_I_Can't_Have_You>
+    a dbo:Song;
+    m3:BeatPerMinute "124";
+    m3:Decibel "-4";
+    mo:MusicArtist "Shawn Mendes";
+    foaf:name "If I Can't Have You";
+    dbo:genre "canadian pop".
+<http://dbpedia.org/resource/It's_You>
+    a dbo:Song;
+    m3:BeatPerMinute "96";
+    m3:Decibel "-7";
+    mo:MusicArtist "Ali Gatie";
+    foaf:name "It's You";
+    dbo:genre "canadian hip hop".
+res:J_Balvin a foaf:person.
+
+res:Jhay_Cortez a foaf:person.
+
+res:Jonas_Brothers a foaf:person.
+
+res:Katy_Perry a foaf:person.
+
+res:Khalid a foaf:person.
+
+res:Kygo a foaf:person.
+
+res:LA_CANCIÓN
+    a dbo:Song;
+    m3:BeatPerMinute "176";
+    m3:Decibel "-6";
+    mo:MusicArtist "J Balvin";
+    foaf:name "LA CANCI\u00d3N";
+    dbo:genre "latin".
+res:Lady_Gaga a foaf:person.
+
+res:Lalala
+    a dbo:Song;
+    m3:BeatPerMinute "130";
+    m3:Decibel "-8";
+    mo:MusicArtist "Y2K";
+    foaf:name "Lalala";
+    dbo:genre "canadian hip hop".
+res:Lauv a foaf:person.
+
+res:Lewis_Capaldi a foaf:person.
+
+res:Lil_Nas_X a foaf:person.
+
+res:Lil_Tecca a foaf:person.
+
+res:Lizzo a foaf:person.
+
+<http://dbpedia.org/resource/Loco_Cdboigo_(feat._J._Balvin_&_Tyga)>
+    a dbo:Song;
+    m3:BeatPerMinute "96";
+    m3:Decibel "-4";
+    mo:MusicArtist "DJ Snake";
+    foaf:name "Loco Cdboigo (feat. J. Balvin & Tyga)";
+    dbo:genre "dance pop".
+res:Lunay a foaf:person.
+
+res:Maluma a foaf:person.
+
+res:Marshmello a foaf:person.
+
+res:Martin_Garrix a foaf:person.
+
+res:MEDUZA a foaf:person.
+
+<http://dbpedia.org/resource/Money_In_The_Grave_(Drake_ft._Rick_Ross)>
+    a dbo:Song;
+    m3:BeatPerMinute "101";
+    m3:Decibel "-4";
+    mo:MusicArtist "Drake";
+    foaf:name "Money In The Grave (Drake ft. Rick Ross)";
+    dbo:genre "canadian hip hop".
+res:Never_Really_Over
+    a dbo:Song;
+    m3:BeatPerMinute "100";
+    m3:Decibel "-5";
+    mo:MusicArtist "Katy Perry";
+    foaf:name "Never Really Over";
+    dbo:genre "dance pop".
+res:Nicky_Jam a foaf:person.
+
+<http://dbpedia.org/resource/No_Guidance_(feat._Drake)>
+    a dbo:Song;
+    m3:BeatPerMinute "93";
+    m3:Decibel "-7";
+    mo:MusicArtist "Chris Brown";
+    foaf:name "No Guidance (feat. Drake)";
+    dbo:genre "dance pop".
+res:No_Me_Conoce_-_Remix
+    a dbo:Song;
+    m3:BeatPerMinute "92";
+    m3:Decibel "-4";
+    mo:MusicArtist "Jhay Cortez";
+    foaf:name "No Me Conoce - Remix";
+    dbo:genre "reggaeton flow".
+res:Old_Town_Road_-_Remix
+    a dbo:Song;
+    m3:BeatPerMinute "136";
+    m3:Decibel "-6";
+    mo:MusicArtist "Lil Nas X";
+    foaf:name "Old Town Road - Remix";
+    dbo:genre "country rap".
+res:One_Thing_Right
+    a dbo:Song;
+    m3:BeatPerMinute "88";
+    m3:Decibel "-2";
+    mo:MusicArtist "Marshmello";
+    foaf:name "One Thing Right";
+    dbo:genre "brostep".
+res:Otro_Trago
+    a dbo:Song;
+    m3:BeatPerMinute "176";
+    m3:Decibel "-5";
+    mo:MusicArtist "Sech";
+    foaf:name "Otro Trago";
+    dbo:genre "panamanian pop".
+res:Otro_Trago_-_Remix
+    a dbo:Song;
+    m3:BeatPerMinute "176";
+    m3:Decibel "-2";
+    mo:MusicArtist "Sech";
+    foaf:name "Otro Trago - Remix";
+    dbo:genre "panamanian pop".
+res:Panini
+    a dbo:Song;
+    m3:BeatPerMinute "154";
+    m3:Decibel "-6";
+    mo:MusicArtist "Lil Nas X";
+    foaf:name "Panini";
+    dbo:genre "country rap".
+res:Piece_Of_Your_Heart
+    a dbo:Song;
+    m3:BeatPerMinute "124";
+    m3:Decibel "-7";
+    mo:MusicArtist "MEDUZA";
+    foaf:name "Piece Of Your Heart";
+    dbo:genre "pop house".
+res:Post_Malone a foaf:person.
+
+res:QUE_PRETENDES
+    a dbo:Song;
+    m3:BeatPerMinute "93";
+    m3:Decibel "-4";
+    mo:MusicArtist "J Balvin";
+    foaf:name "QUE PRETENDES";
+    dbo:genre "latin".
+res:Ransom
+    a dbo:Song;
+    m3:BeatPerMinute "180";
+    m3:Decibel "-6";
+    mo:MusicArtist "Lil Tecca";
+    foaf:name "Ransom";
+    dbo:genre "trap music".
+res:ROSALÍA a foaf:person.
+
+res:Sam_Smith a foaf:person.
+
+res:Sech a foaf:person.
+
+res:Señorita
+    a dbo:Song;
+    m3:BeatPerMinute "117";
+    m3:Decibel "-6";
+    mo:MusicArtist "Shawn Mendes";
+    foaf:name "Se\u00f1orita";
+    dbo:genre "canadian pop".
+res:Shallow
+    a dbo:Song;
+    m3:BeatPerMinute "96";
+    m3:Decibel "-6";
+    mo:MusicArtist "Lady Gaga";
+    foaf:name "Shallow";
+    dbo:genre "dance pop".
+res:Shawn_Mendes a foaf:person.
+
+res:Soltera_-_Remix
+    a dbo:Song;
+    m3:BeatPerMinute "92";
+    m3:Decibel "-4";
+    mo:MusicArtist "Lunay";
+    foaf:name "Soltera - Remix";
+    dbo:genre "latin".
+res:Someone_You_Loved
+    a dbo:Song;
+    m3:BeatPerMinute "110";
+    m3:Decibel "-6";
+    mo:MusicArtist "Lewis Capaldi";
+    foaf:name "Someone You Loved";
+    dbo:genre "pop".
+res:Sucker
+    a dbo:Song;
+    m3:BeatPerMinute "138";
+    m3:Decibel "-5";
+    mo:MusicArtist "Jonas Brothers";
+    foaf:name "Sucker";
+    dbo:genre "boy band".
+<http://dbpedia.org/resource/Summer_Days_(feat._Macklemore_&_Patrick_Stump_of_Fall_Out_Boy)>
+    a dbo:Song;
+    m3:BeatPerMinute "114";
+    m3:Decibel "-7";
+    mo:MusicArtist "Martin Garrix";
+    foaf:name "Summer Days (feat. Macklemore & Patrick Stump of Fall Out Boy)";
+    dbo:genre "big room".
+<http://dbpedia.org/resource/Sunflower_-_Spider-Man:_Into_the_Spider-Verse>
+    a dbo:Song;
+    m3:BeatPerMinute "90";
+    m3:Decibel "-6";
+    mo:MusicArtist "Post Malone";
+    foaf:name "Sunflower - Spider-Man: Into the Spider-Verse";
+    dbo:genre "dfw rap".
+res:Takeaway
+    a dbo:Song;
+    m3:BeatPerMinute "85";
+    m3:Decibel "-8";
+    mo:MusicArtist "The Chainsmokers";
+    foaf:name "Takeaway";
+    dbo:genre "edm".
+res:Talk
+    a dbo:Song;
+    m3:BeatPerMinute "136";
+    m3:Decibel "-9";
+    mo:MusicArtist "Khalid";
+    foaf:name "Talk";
+    dbo:genre "pop".
+res:Taylor_Swift a foaf:person.
+
+res:Te_Robaré
+    a dbo:Song;
+    m3:BeatPerMinute "176";
+    m3:Decibel "-4";
+    mo:MusicArtist "Nicky Jam";
+    foaf:name "Te Robar\u00e9";
+    dbo:genre "latin".
+res:The_Chainsmokers a foaf:person.
+
+<http://dbpedia.org/resource/The_London_(feat._J._Cole_&_Travis_Scott)>
+    a dbo:Song;
+    m3:BeatPerMinute "98";
+    m3:Decibel "-7";
+    mo:MusicArtist "Young Thug";
+    foaf:name "The London (feat. J. Cole & Travis Scott)";
+    dbo:genre "atl hip hop".
+res:Tones_and_I a foaf:person.
+
+res:Truth_Hurts
+    a dbo:Song;
+    m3:BeatPerMinute "158";
+    m3:Decibel "-3";
+    mo:MusicArtist "Lizzo";
+    foaf:name "Truth Hurts";
+    dbo:genre "escape room".
+res:Y2K a foaf:person.
+
+res:You_Need_To_Calm_Down
+    a dbo:Song;
+    m3:BeatPerMinute "85";
+    m3:Decibel "-6";
+    mo:MusicArtist "Taylor Swift";
+    foaf:name "You Need To Calm Down";
+    dbo:genre "dance pop".
+res:Young_Thug a foaf:person.
+
