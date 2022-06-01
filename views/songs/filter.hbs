@@ -1,0 +1,124 @@
+{{> header}}
+
+<div class="tile is-ancestor">
+  {{#if isLoggedIn}}
+    {{> accountMenu}}
+  {{/if}}
+  <div class="tile is-vertical is-10 " id="contentOverview">
+
+      <div class="tile is-parent">
+        <div class="tile is-child">
+                <div class="is-mobile box">    
+                  <h1 class="title is-3">Filtered by {{filter}}</h1>
+                  <div class="column">
+                    <form action="/playlist/songs/filter" method="get">            
+                      <div class="field has-addons">
+                      <div class="control">
+                        <input class="input" type="text" name="filter" placeholder="Search for songs">
+                      </div>
+                      <div class="control">
+                        <button class="button is-primary" type="submit">Search</button>
+                      </div>
+                    </div>
+                    </form>     
+                  </div>
+                  <div class="dropdown is-hoverable">
+                        <div class="dropdown-trigger">
+                            <div aria-haspopup="true" aria-controls="dropdown-menu4">
+                                <button class="button is-rounded is-small is-white">Filter <span class="icon ml-2">
+                                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                                </span></button>            
+                                   
+                            </div>
+                            
+                        </div>
+
+                        
+                        <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+                            <div class="dropdown-content">
+                                
+                                <div class="dropdown-item">
+                                    <form action="/playlist/songs/filter" method="get">
+                                    <input type="hidden" name="genre" value="pop">
+                                    <button class="button is-primary is-inverted" type="submit">Pop</button>
+                                    </form>
+                                </div>
+                                <div class="dropdown-item">
+                                    <form action="/playlist/songs/filter" method="get">
+                                    <input type="hidden" name="genre" value="edm">
+                                    <button class="button is-primary is-inverted" type="submit">Edm</button>
+                                    </form>
+                                </div>
+                                <div class="dropdown-item">
+                                    <form action="/playlist/songs/filter" method="get">
+                                    <input type="hidden" name="genre" value="reggaeton">
+                                    <button class="button is-primary is-inverted" type="submit">Reggaeton</button>
+                                   </form>
+                                </div>
+                                <div class="dropdown-item">
+                                    <form action="/playlist/songs/filter" method="get">
+                                    <input type="hidden" name="genre" value="hiphop">
+                                    <button class="button is-primary is-inverted" type="submit">HipHop</button>
+                                   </form>
+                                </div>
+                                         
+                            </div>
+                        </div>
+                    </div>
+ 
+                    
+                    <span class="tag is-primary is-rounded ">
+                        {{filter}}
+                        <a href="/playlist/songs/1"><button class="delete is-small"></button></a> 
+                    </span>
+                    
+                {{#unless songs.results}}
+                <p>No search results found </p>
+                {{/unless}}
+                <div class="line"></div>
+                {{#each songs.results}}
+                <div class="columns is-multiline is-vcentered mt-2">
+                  <div class="column">
+                   <p> <b>Title: </b>{{this.title}}</p>
+                    <p> <b>Artist: </b><a id="artistName" href="/playlist/artist/{{this.artist}}">{{this.artist}}</a></p>
+                  </div>
+
+                  <div class="column has-text-centered">
+                    
+                    <div class="dropdown is-hoverable">
+                          <div class="dropdown-trigger">
+                              <div aria-haspopup="true" aria-controls="dropdown-menu4">           
+                                  <button class="button is-white"> Add to playlist <span class="icon ml-2">
+                                  <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                                  </span></i></button>       
+                              </div>
+                          </div>
+                          <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+                              <div class="dropdown-content">
+                                  {{#each ../playlists}}
+                                  <div class="dropdown-item">
+                                      <form action="/song/addSongToPlaylist" method="post">
+                                          <input type="hidden" name="playlistId" value="{{this.id}}" />
+                                          <input type="hidden" name="title" value="{{../this.title}}" />
+                                          <input type="hidden" name="artist" value="{{../this.artist}}" />
+                                          <input type="hidden" name="page" value="{{../../page}}" />
+                                          <button class="button is-white" type="submit">{{this.playlistname}}</button>
+                                      </form>  
+                                  </div>
+                                  {{/each}}          
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                </div>
+                <div class="line"></div>
+                {{/each}}
+            </div>
+           
+        </div>
+      </div>
+
+  </div>
+</div>
+{{> footer}}

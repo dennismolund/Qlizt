@@ -2,6 +2,10 @@ a{
     color: black;
 }
 
+#artistName:hover{
+    text-decoration: underline;
+  }
+
 .line {
     border-bottom: 2px solid #ccc;
     display: block;

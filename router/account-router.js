@@ -11,10 +11,6 @@ router.get("/login", function(request, response){
 })
 
 
-router.get("/signup", function(request, response){
-    response.render("signup.hbs")
-})
-
 router.get("/settings", function(request, response){
     if(!request.session.userId) return response.render("home.hbs")
     const account = {

@@ -26,15 +26,20 @@
                   <div class="dropdown-item">
                     <form action="/playlist/overview" method="get">
                       <input type="hidden" name="filter" value="public">
-                      <button type="submit">Public playlists</button>
+                      <button class="button is-white" type="submit">Public playlists</button>
                     </form>
                   </div>
                   <div class="dropdown-item">
                     <form action="/playlist/overview" method="get">
                       <input type="hidden" name="filter" value="private">
-                      <button type="submit">Private playlists</button>
+                      <button class="button is-white" type="submit">Private playlists</button>
                     </form>
-                  
+                  </div>
+                  <div class="dropdown-item">
+                    <form action="/playlist/overview" method="get">
+                      <input type="hidden" name="filter" value="all">
+                      <button class="button is-white" type="submit">All playlists</button>
+                    </form>
                   </div>
                 </div>
               </div>
@@ -42,13 +47,23 @@
 
               <div class="columns is-multiline is-mobile">
               {{#ifEquals filter "public"}}
-                {{#each publicPlaylists}}
-                  {{> playlistCard}}
+                {{#each playlists}}
+                  {{#ifEquals this.isPublic 1}}
+                    {{> playlistCard}}
+                  {{/ifEquals}}
                 {{/each}}
               {{/ifEquals}}
 
               {{#ifEquals filter "private"}}
-                {{#each privatePlaylists}}
+                {{#each playlists}}
+                  {{#ifEquals this.isPublic 0}}
+                    {{> playlistCard}}
+                  {{/ifEquals}}
+                {{/each}}
+              {{/ifEquals}}
+
+              {{#ifEquals filter "all"}}
+                {{#each playlists}}
                   {{> playlistCard}}
                 {{/each}}
               {{/ifEquals}}

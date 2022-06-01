@@ -1,8 +1,17 @@
 {{> header}}
 
+<div class="tile is-ancestor">
+  {{#if isLoggedIn}}
+    {{> accountMenu}}
+  {{/if}}
+  <div class="tile is-vertical is-10 " id="contentOverview">
+    <div class="tile">
+      <div class="tile is-parent">
+        <div class="tile is-child">
+
  <section class="section">
-        <div class="container has-text-centered">
-            <h2 class="title">Edit playlist</h2>
+        <div class="container">
+            <h2 class="title ml-4">Edit playlist</h2>
             
     <form action="/playlist/update/{{playlistId}}" method="post">
         <div class="columns is-vcentered">
@@ -33,9 +42,9 @@
           {{/ifEquals}}
           
           <div class="field">
-            <div class="has-text-centered">
+            
               <input class="button is-vcentered is-rounded is-outlined" type="submit" value="Done"></input>
-            </div>
+            
           </div>
           
         </section>
@@ -43,4 +52,9 @@
     </div>
     </form>
     </section>
+    </div>
+      </div>
+    </div>
+  </div>
+</div>
     {{> footer}}

@@ -12,23 +12,25 @@
               <h1 class="title is-3">Explore</h1>
               <div class="columns is-multiline is-mobile">
                 {{#each playlists}}
-                  {{#if this.isPublic}}     
+                  {{#ifEquals this.isPublic 1}}     
                     <div class="column is-one-fifth">  
                     <div class="card">
-                      <a href="/song/{{this.id}}/{{this.userId}}">        
+
+                    <form action="/song/{{this.id}}/{{this.accountId}}" method="get">
+                      <input type="hidden" name="playlistName" value="{{this.playlistname}}">     
                         <div class="card-image">
                             <figure class="image is-4by3">
                                 <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
                             </figure>
                         </div>
-                        <div class="card-content">
-                            <p>{{this.playlistname}}</p>
+                        <div class="card-content has-text-centered">
+                            <button class="button is-white" type="submit" >{{this.playlistname}}</button>
                             <p>Created by: {{this.username}}</p>
                         </div>
-                        </a>
+                        </form>
                     </div>
                     </div>
-                    {{/if}}
+                    {{/ifEquals}}
                 {{/each}}
             </div>
             </div>
